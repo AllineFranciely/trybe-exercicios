@@ -1,0 +1,7 @@
+div:hover {
+  border-style: solid;
+  border-color: coral;
+}
+h3:nth-child(odd) {
+  font-style: italic;
+}
