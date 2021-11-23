@@ -7,17 +7,12 @@ ol li:nth-child(even) {
 ol li:nth-child(odd) {
     text-transform: uppercase;
 }
-Header {
+h1, h3 {
     color: darkred;
 }
-em {
+h1 em {
     font-size: 40px;
-    border-style: solid 1px;
-    border-color: black;
+    
+    border: solid 1px black
 }
-li {
-    font-size: 20px;
-}
-    li em {
-        font-weight: bolder;
-    }
+
