@@ -1,0 +1,25 @@
+ol {
+    background-color: rgb(237, 248, 85);
+}
+ol li:nth-child(even) {
+    color: darkgreen;
+}
+ol li:nth-child(odd) {
+    text-transform: uppercase;
+}
+h1, h3 {
+    color: darkred;
+}
+h1 em {
+    font-size: 40px;
+    border: solid 1px black;
+}
+li {
+    font-size: 20px;
+}
+li em {
+    font-weight: bolder;
+}
+#ponto1 {
+    color: darkblue;
+}
