@@ -5,3 +5,6 @@ div:hover {
 h3:nth-child(odd) {
   font-style: italic;
 }
+h3 {
+  color: chocolate;
+}
