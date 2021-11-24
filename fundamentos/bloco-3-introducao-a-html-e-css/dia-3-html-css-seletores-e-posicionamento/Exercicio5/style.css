@@ -20,6 +20,29 @@ li {
 li em {
     font-weight: bolder;
 }
-#ponto1 {
-    color: darkblue;
+.ulist :nth-child(-n+3) {
+    color:blue
+}
+#java {
+    background-color: rgb(236, 131, 214);
+}
+#site1:hover {
+    color:rgb(255, 102, 0);
+    font-weight: bolder;
+}
+#site2:hover {
+    color:green;
+    font-weight: bolder;
+}
+#site3:hover {
+    color:black;
+    font-weight: bolder;
+}
+#site4:hover {
+    color:yellow;
+    font-weight: bolder;
+}
+#site5:hover {
+    color:green;
+    font-weight: bolder;
 }
