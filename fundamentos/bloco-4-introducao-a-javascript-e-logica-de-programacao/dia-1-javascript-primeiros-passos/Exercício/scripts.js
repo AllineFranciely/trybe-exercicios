@@ -1,71 +1,33 @@
-// Exercício 1 
-const primeiroNumero = 5;
-const segundoNumero = 7;
-console.log(primeiroNumero + segundoNumero);
-console.log(primeiroNumero - segundoNumero);
-console.log(primeiroNumero * segundoNumero);
-console.log(primeiroNumero / segundoNumero);
-console.log(primeiroNumero % segundoNumero);
-
-//Exercício 2
-const firstNumber = 6;
-const secondNumber = 10;
-if (firstNumber > secondNumber){
-    console.log(firstNumber);
-} else {
-    console.log(secondNumber);
+const salarioBruto = 15000;
+let inss;
+let salarioBase;
+let IR;
+let salarioLiquido;
+if (salarioBruto <= 1556.94) {
+     inss = (0.08 * salarioBruto);
+} else if (salarioBruto >= 1556.95 && salarioBruto <= 2594.92) {
+     inss =  (0.09 * salarioBruto);
+} else if (salarioBruto >= 2594.93 && salarioBruto <= 5189.82) {
+     inss =  (0.1 * salarioBruto);
+} else if (salarioBruto > 5189.82) {
+     inss =  570.88;
 }
-
-// Exercício 3
-const numeroUm = 3;
-const numeroDois = 7;
-const numeroTres = 5;
-let numeroMaior;
-if (numeroUm > numeroDois && numeroUm > numeroTres) {
-    numeroMaior = numeroUm;
-} else if (numeroDois > numeroUm && numeroDois) {
-    numeroMaior = numeroDois;
-} else if (numeroTres > numeroUm && numeroTres > numeroDois) {
-    numeroMaior = numeroTres
+salarioBase = (salarioBruto-inss);
+if (salarioBase < 1903.98) {
+    IR = 0;
+} else if (salarioBase >= 1903.99 && salarioBase <= 2826.65) {
+    IR = ((0,075 * salarioBase) - 142.80);
+}else if (salarioBase >= 2826.66 && salarioBase <= 3751.05) {
+    IR = ((0,15 * salarioBase) - 354.80);
+} else if (salarioBase >= 3751.06 && salarioBase <= 4664.68) {
+    IR = ((0,225 * salarioBase) - 636.13);
+} else if (salarioBase > 4664.68) {
+    IR = ((0,275 * salarioBase) - 869.36);
 }
-console.log(numeroMaior);
+salarioLiquido = (salarioBase - IR);
+console.log(salarioBase);
+console.log(salarioLiquido);
 
-//Exercício 4 
-const recebeNumero = 0;
-if (recebeNumero > 0) {
-    console.log("Positive");
-} else if (recebeNumero < 0) {
-    console.log("Negative");
-} else {
-    console.log("Zero");
-}
 
-//Exercício 5
-const anguloUm = -45;
-const anguloDois = 90;
-const anguloTres = 45;
-const triangulo = (anguloUm + anguloDois + anguloTres);
-if (triangulo === 180) {
-    console.log("true");
-}else {
-    console.log("false");
-}
 
-//Exercíci0 6 rei, rainha, bispo, cavalo, torre, peão 
-const pecaXadres = "Cavalo";
-let result = pecaXadres.toLowerCase();
-if (result === "torre") {
-    console.log("Vertical e horizontal");
-} else if (result === "cavalo") {
-    console.log("Movimento em L");
-} else if (result === "bispo") {
-    console.log("Diagonal")
-} else if (result === "rainha") {
-    console.log("Vertical, horizontal e diagonal");
-} else if (result === "rei") {
-    console.log("1 casa vertical e horizontal")
-} else if (result === "peão") {
-    console.log("1 casa vertical")
-} else {
-    console.log("Peça inválida")
-}
+14429.12
