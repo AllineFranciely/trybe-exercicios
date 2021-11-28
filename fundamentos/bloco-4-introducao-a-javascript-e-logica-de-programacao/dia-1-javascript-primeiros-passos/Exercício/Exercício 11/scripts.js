@@ -1,4 +1,4 @@
-const salarioBruto = 15000;
+const salarioBruto = 3000;
 let inss;
 let salarioBase;
 let IR;
@@ -25,9 +25,7 @@ if (salarioBase < 1903.98) {
     IR = ((0,275 * salarioBase) - 869.36);
 }
 salarioLiquido = (salarioBase - IR);
+console.log(inss);
+console.log(IR);
 console.log(salarioBase);
 console.log(salarioLiquido);
-
-
-
-14429.12
