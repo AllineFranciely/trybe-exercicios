@@ -20,7 +20,7 @@ if (salarioBase < 1903.98) {
 }else if (salarioBase >= 2826.66 && salarioBase <= 3751.05) {
     IR = ((0.15 * salarioBase) - 354.80);
 } else if (salarioBase >= 3751.06 && salarioBase <= 4664.68) {
-    IR = ((0.25 * salarioBase) - 636.13);
+    IR = ((0.225 * salarioBase) - 636.13);
 } else if (salarioBase > 4664.68) {
     IR = ((0.275 * salarioBase) - 869.36);
 }
