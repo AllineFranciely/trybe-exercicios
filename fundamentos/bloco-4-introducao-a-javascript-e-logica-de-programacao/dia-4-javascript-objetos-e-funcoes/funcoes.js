@@ -16,3 +16,7 @@ function operacoesNumericas(a, b) {
     return (a % b);
 }
 console.log(operacoesNumericas(30,5));
+/* O return termina a execução da função, 
+por isso você precisaria retornar um tipo 
+de variável que aceite mais de um valor, 
+como array ou objeto/*
