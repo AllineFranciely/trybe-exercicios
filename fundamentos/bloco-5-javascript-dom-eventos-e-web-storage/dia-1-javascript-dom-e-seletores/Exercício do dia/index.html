@@ -78,7 +78,11 @@
        }
        corrigeTexto();
 
-       
+       function mudaTexto() {
+           let texto = document.getElementsByTagName("p")[0];
+           texto.innerText = texto.innerText.toUpperCase();
+       }
+       mudaTexto();
     </script>
   </body>
 </html>
