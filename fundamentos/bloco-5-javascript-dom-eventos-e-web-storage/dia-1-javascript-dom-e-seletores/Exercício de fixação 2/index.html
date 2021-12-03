@@ -10,8 +10,9 @@
     <script>
       const paragraph = document.getElementById("paragraph");
       paragraph.style.color = "red";
-      let paragrafo = document.getElementsByClassName("para");
+      let paragrafo = document.querySlectorAll("para");
       paragrafo[0].style.fontSize = "1.5rem";
+      paragrafo[0].style.color = "pink";
       let subtitulo = document.getElementsByTagName("h4")[0];
       subtitulo.style.color = "green"; 
     </script>
