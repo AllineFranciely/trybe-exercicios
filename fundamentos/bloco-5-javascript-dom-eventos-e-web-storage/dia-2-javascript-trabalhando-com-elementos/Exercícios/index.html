@@ -67,7 +67,11 @@
 
       const elementoSection = document.createElement("section");
       elementoSection.className = "center-content";
-      document.elementoMain.appendChild(elementoSection);
+      elementoMain.appendChild(elementoSection);
+
+      const elementoParagrafo = document.createElement("p");
+      elementoParagrafo.innerText = "Olá projeto";
+      elementoSection.appendChild(elementoParagrafo);
 
     </script>
   </body>
