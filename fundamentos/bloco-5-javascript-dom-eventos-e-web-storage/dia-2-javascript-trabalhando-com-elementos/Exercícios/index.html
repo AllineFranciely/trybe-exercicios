@@ -112,6 +112,15 @@
      const sectionLeftContent = document.getElementsByClassName("left-content")[0];
      elementoMain.removeChild(sectionLeftContent);
 
+     const sectionRightContent = document.getElementsByClassName("right-content")[0];
+     sectionRightContent.style.marginRight="auto";
+
+     const sectionCenterContent = document.getElementsByClassName("center-content")[0];
+     sectionCenterContent.parentNode.style.backgroundColor="green";
+
+     elementoLista.lastChild.remove();
+     elementoLista.lastChild.remove();
+
     </script>
   </body>
 </html>
