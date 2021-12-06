@@ -58,7 +58,7 @@
   <body>
     <script>
       const elementoH1 = document.createElement("h1");
-      elementH1.innerText = "Exercício 5.2 - JavaScript DOM";
+      elementoH1.innerText = "Exercício 5.2 - JavaScript DOM";
       document.body.appendChild(elementoH1);
 
       const elementoMain = document.createElement("main");
@@ -89,7 +89,7 @@
       const elementoLista = document.createElement("ul");
       elementoSectionRight.appendChild(elementoLista);
       const lista = ["Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Dez"];
-      for (let numestos in lista) {
+      for (let numeros in lista) {
           const elementoLi = document.createElement("li");
           elementoLi.innerText = lista[numeros];
           elementoLista.appendChild(elementoLi);
@@ -100,6 +100,17 @@
         elementoH3.innerHTML = "Show " + index;
         elementoMain.appendChild(elementoH3);
       }
+
+      const title = document.querySelector("h1");
+      title.className = "title";
+      
+      const elementosH3 = document.getElementsByTagName("h3");
+      for(let index = 0; index < 3; index += 1) {
+          elementosH3[index].className = "description";
+      }
+
+     const sectionLeftContent = document.getElementsByClassName("left-content")[0];
+     elementoMain.removeChild(sectionLeftContent);
 
     </script>
   </body>
