@@ -13,9 +13,9 @@ const myWebpage = document.getElementById('my-spotrybefy');
 // 2.1. Deve existir apenas um elemento com a classe 'tech'. Como você faz isso?
 
 function adicionaTech(event) {
-    const elementoTech = documento.querySelector(".tech");
+    const elementoTech = document.querySelector(".tech");
     elementoTech.classList.remove("tech");
-    evento.target.classList.add("tech");
+    event.target.classList.add("tech");
     input.value = "";
 }
 firstLi.addEventListener("click", adicionaTech);
@@ -37,8 +37,8 @@ function mudaTexto(event) {
 
 function abreLink() {
     window.location.replace("https://allinefranciely.github.io/portfolio/");
-}
-myWebpage.addEventListener("dbclick", abreLink);
+  }
+myWebpage.addEventListener('dblclick', abreLink);
 
 // 5. Crie uma função que, ao passar o mouse sobre 'Meu top 3 do Spotrybefy', altere
 // a cor do mesmo;
@@ -47,6 +47,11 @@ function mudaCor(event) {
     event.target.style.color = "black";
 }
 myWebpage.addEventListener("mouseover", mudaCor);
+
+function voltaCor(event) {
+    event.target.style.color = "unset";
+}
+myWebpage.addEventListener("mouseout", voltaCor);
 
 // Segue abaixo um exemplo do uso de event.target:
 
