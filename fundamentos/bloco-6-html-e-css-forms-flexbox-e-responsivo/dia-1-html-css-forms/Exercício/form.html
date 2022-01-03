@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="form-header">
+        <h1>Formulário para cadastro de currículo</h1>
+        <p>Preencha os campos abaixo</p>
+      </header>
+      <main>
+        <form id="formulario">
+          <div class="form">
+            <fieldset>
+              <div class="line-content">
+                <label for="name">Nome: </label>
+                <input type="text" name="name" id="name" maxlength="40" required>
+              </div>
+              <div class="line-content">
+                  <label for="email">Email: </label>
+                  <input type="text" name="email" id="email" maxlength="50" required>
+              </div>
+              <div class="line-content">
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email" maxlength="50" required>
+              </div>
+              <div class="line-content">
+                <label for="cpf">CPF: </label>
+                <input type="text" name="cpf" id="cpf" maxlength="11" required>
+              </div>
+              <div class="line-content">
+                <label for="endereço">Endereço: </label>
+                <input type="text" name="endereço" id="endereço" maxlength="200" required>
+              </div>
+              <div class="line-content">
+                <label for="cidade">Cidade: </label>
+                <input type="text" name="cidade" id="cidade" maxlength="28" required>
+              </div>
+              <div class="line-content">
+                <label for="state">Estado: </label>
+                <select name="state" id="state" required>
+                  <option disabled selected value>Selecione seu estado</option>
+                </select>
+              </div>
+              <div class="line-content">
+                <label for="tipoDeResidência">Tipo de imóvel: </label>
+                <input type="radio" name="tipoDeResidência" id="casa" value="casa" required>
+                <span>Casa</span>
+                <input type="radio" name="tipoDeResidência" id="apartamento" value="apartamento" required>
+                <span>Apartamento</span>
+              </div>
+            </fieldset>
+    <script src="script.js"></script>
+</body>
+</html>
