@@ -1,261 +1,143 @@
+  // script.js
 
-function createStateOptions() {
-  let states = document.getElementById('state');
-  let stateOptions = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
-
-  for (let index = 0; index < stateOptions.length; index += 1) {
-    let option = document.createElement('option');
-    option.innerText = stateOptions[index];
-    option.value = stateOptions[index];
-    states.appendChild(option);
-  }
-}
-
-function defaultValidation(input, name){
-  let trimmed = input.value.trim();
-  let validation = inputs[name];
-
-  if(validation.required && trimmed.length === 0){
-    return false;
-  }
-
-  if(validation.maxLength && trimmed.length > validation.maxLength){
-    return false;
-  }
-  
-  return true;
-}
-
-function dateValidation(input, name){
-  if(input.value.length === 0){
-    return {
-      message: 'A data não foi preenchida!'
+  function createStateOptions() {
+    const states = document.getElementById('state');
+    const stateOptions = ['Selecione seu estado', 'AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
+    for (let index = 0; index < stateOptions.length; index += 1) {
+      const createOptions = document.createElement('option');
+      states.appendChild(createOptions).innerText = stateOptions[index];
+      states.appendChild(createOptions).value = stateOptions[index];
     }
   }
-
-  let regex = /^\d\d\/\d\d\/\d\d\d\d$/;
   
-  if(!regex.test(input.value)){
-    return {
-      message: 'Data: Formato inválido'
-    };
-  }
-
-  let splitted = input.value.split('/');
-  let day = splitted[0];
-  let month = splitted[1];
-  let year = splitted[2];
-
-  if(day < 0 || day > 30){
-    return {
-      message: 'Dia inválido'
-    };
-  }
-
-  if(month < 0 || month > 12){
-    return {
-      message: 'Mês inválido'
+  const picker = new Pikaday({
+    field: document.getElementById('datepicker'),
+    format: 'D/M/YYYY',
+    toString(date, format) {
+      // you should do formatting based on the passed format,
+      // but we will just return 'D/M/YYYY' for simplicity
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    },
+    parse(dateString, format) {
+      // dateString is the result of `toString` method
+      const parts = dateString.split('/');
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
+    }
+  });
+  
+  const clearButton = document.querySelector('.clear-button');
+  function clearFields() {
+    const formElements = document.querySelectorAll('input');
+    const textArea = document.querySelector('textarea')
+    for (let index = 0; index < formElements.length; index += 1) {
+      const userInput = formElements[index];
+      userInput.value = '';
+      textArea.value = '';
     }
   }
-
-  if(year < 0) {
-    return {
-      message: 'Ano inválido'
-    };
-  }
-
-  return true;
-}
-
-function getSelectedOption(select){
-  return select.options[select.selectedIndex];
-}
-
-function selectValidation(select, name){
-  let option = getSelectedOption(select);
-  let validation = inputs[name];
-
-  if(validation.required && (!option || option.disabled)){
-    return false;
-  }
-
-  return true;
-}
-
-function radioValidation(radio, name){
-  let checked = document.querySelector(`[name=${name}]:checked`)
   
-  if(checked === null){
-    return false;
-  }
-
-  return true;
-}
-
-let validationStrategies = {
-  default: defaultValidation,
-  date: dateValidation,
-  select: selectValidation,
-  radio: radioValidation,
-}
-
-function validateInput(inputName){
-  let inputType = inputs[inputName].type;
-  let input = document.querySelector(`[name=${inputName}]`)
-
-  if(inputType){
-    let validationFunction = validationStrategies[inputType];
-    return validationFunction(input, inputName);
-  }
-
-  return validationStrategies.default(input, inputName);
-}
+  clearButton.addEventListener('click', clearFields);
   
-function renderErrorMessages(messages){
-  let form = document.querySelector('#cv-form');
-  let messageDiv = document.createElement('div');
-  messageDiv.className = 'error';
-  form.prepend(messageDiv);
-
-  for(let message of messages){
-    let p = document.createElement('p');
-    p.innerText = message;
-
-    messageDiv.appendChild(p);
-  }
-}
-
-function defaultRendering(input){
-  let p = document.createElement('p');
-  p.innerText = input.value;
-
-  return p;
-}
-
-function radioRendering(input){
-  let p = document.createElement('p');
-  let name = input.getAttribute('name');
-  let checked = document.querySelector(`[name=${name}]:checked`);
-
-  if(checked){
-    p.innerText = checked.value;
-  }
-
-  return p;
-}
-
-function selectRendering(input){
-  let p = document.createElement('p');
-  let option = getSelectedOption(input)
-  p.innerText = option.value;
+  new JustValidate('.js-form', {
+    rules: {
+      name: {
+        required: true,
+        minLength: 3,
+        maxLength: 40
+      },
+      email: {
+        required: true,
+        email: true,
+        maxLength: 50
+      },
+      cpf: {
+        required: true,
+        maxLength: 11
+      },
+      address: {
+        required: true,
+        maxLength: 200
+      },
+      city: {
+        required: true,
+        maxLength: 28
+      },
+      state: {
+        required: true,
+      },
+      radio: {
+        required: true,
+      },
+      text: {
+        required: true,
+        maxLength: 1000
+      },
+      position: {
+        required: true,
+        maxLength: 40
+      },
+      description: {
+        required: true,
+        maxLength: 500
+      },
+      date: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: 'O campo de nome é obrigatório.',
+        maxLength: 'O limite é de 40 caracteres.'
+      },
+      email: {
+        required: 'O campo de email é obrigatório.',
+        email: 'O email digitado não é válido.',
+        maxLength: 'O limite é de 50 caracteres.'
+      },
+      cpf: {
+        required: 'O campo de CPF é obrigatório.',
+        maxLength: 'O limite é de 11 caracteres.'
+      },
+      address: {
+        required: 'O campo endereço é obrigatório.',
+        maxLength: 'O limite é de 200 caracteres.'
+      },
+      city: {
+        required: 'O campo cidade é obrigatório.',
+        maxLength: 'O limite é de 28 caracteres.'
+      },
+      state: {
+        required: 'O campo estado é obrigatório.',
+      },
+      radio: {
+        required: 'A escolha de um item é obrigatória.',
+      },
+      text: {
+        required: 'Este campo é obrigatório.',
+        maxLength: 'O limite é de 1000 caracteres.'
+      },
+      position: {
+        required: 'Este campo é obrigatório.',
+        maxLength: 'O limite é de 40 caracteres.'
+      },
+      description: {
+        required: 'Este campo é obrigatório.',
+        maxLength: 'O limite é de 500 caracteres.'
+      },
+      date: {
+        required: 'Este campo é obrigatório.',
+      }
+    },
+    submitHandler: function (form, values) {
+      console.log(form, values);
+    }});
   
-  return p;
-}
-
-let renderStrategies = {
-  default: defaultRendering,
-  radio: radioRendering,
-  select: selectRendering,
-}
-
-function renderData(){
-  let dataDiv = document.createElement('div');
-  dataDiv.className = 'data';
-
-  let form = document.querySelector('#cv-form');
-  form.prepend(dataDiv);
-
-  for(let name in inputs){
-    let inputType = inputs[name].type;
-    let input = document.querySelector(`[name=${name}]`);
-
-    let element;
-
-    if(renderStrategies[inputType]){
-      element = renderStrategies[inputType](input, dataDiv)
-    } else {
-      element = renderStrategies.default(input, dataDiv)
-    }
-
-    dataDiv.appendChild(element);
+  window.onload = function () {
+    createStateOptions();
   }
-}
-
-function validateData(){
-  let validationsList = {};
-
-  for(let inputName in inputs){
-    let isValid = validateInput(inputName);
-    validationsList[inputName] = isValid;
-  }
-  
-  let counter = 0;
-  let messages = [];
-
-  for(let index in validationsList){
-    if(validationsList[index] === false){
-      counter += 1;
-    }
-
-    if(validationsList[index].message){
-      counter += 1;
-      messages.push(validationsList[index].message);
-    }
-  }
-
-  return {
-    errorQtd: counter,
-    messages,
-  }
-}
-
-function clearDivs(){
-  let errorDivs = document.querySelectorAll('.error');
-
-  for(div of errorDivs){
-    div.remove();
-  }
-
-  let dataDiv = document.querySelector('.data');
-
-  if(dataDiv){
-    dataDiv.remove();
-  }
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-
-  let validation = validateData();
-
-  clearDivs();
-  
-  if(validation.errorQtd === 0){
-    renderData();
-  } else {
-    validation.messages.unshift('Dados Inválidos')
-
-    renderErrorMessages(validation.messages)
-  }
-}
-
-function clearFields() {
-  let formElements = document.querySelectorAll('input');
-  let textArea = document.querySelector('textarea')
-  let div = document.querySelectorAll('.div-curriculum');
-  for (let index = 0; index < formElements.length && index < div.length; index += 1) {
-    let userInput = formElements[index];
-    userInput.value = '';
-    textArea.value = '';
-    div[index].innerText = '';
-  }
-}
-
-window.onload = function () {
-  createStateOptions();
-  let submitButton = document.querySelector('.submit-button');
-  submitButton.addEventListener('click', handleSubmit);
-
-  let clearButton = document.querySelector('.clear-button');
-  clearButton.addEventListener('click', clearFields)
-}
