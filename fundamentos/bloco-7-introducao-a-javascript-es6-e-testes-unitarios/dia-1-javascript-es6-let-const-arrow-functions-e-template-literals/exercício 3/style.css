@@ -1,0 +1,26 @@
+body {
+  background-image: url(./2e2bd816738e1535b4db9485f968aea5.png);
+}
+
+#contador {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+  margin-top: 330px;
+  margin-left: 200px;
+} 
+
+#botao {
+  background-color: red;
+  color: white;
+  border: solid 2px red;
+  width: 10%;
+}
+
+#texto {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+}
+
