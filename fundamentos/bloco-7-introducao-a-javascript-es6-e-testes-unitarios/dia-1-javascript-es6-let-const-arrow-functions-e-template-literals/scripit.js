@@ -53,3 +53,33 @@ const longestWord = text => {
 
 console.log(longestWord("Antonio foi no banheiro e não sabemos o que aconteceu"));
 
+//Exercício 4: 
+
+const array = ["CSS", "HTML", "JavaScript", "ES6", "HTML semântico"];
+
+function frase (parametro) {
+    const fun1 = parametroInner => (
+      `Tryber ${parametroInner} aqui!
+
+      Tudo bem?`
+    );
+
+    let result = `${fun1(parametro)}
+
+    Minhas cinco principais habilidades são:`;
+
+    array.forEach((skill, index) =>
+    result = `${result}
+
+    - ${skill}`);
+
+    result = `
+    ${result}
+
+    #goTrybe
+    `;
+
+    return result;
+}
+
+console.log(frase("Alline"));
