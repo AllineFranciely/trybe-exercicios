@@ -50,3 +50,55 @@ function findMusic(id) {
 }
 
 console.log(findMusic('31031685'))
+
+// Exercicios array.dome e array.every: 
+// 1: 
+const names2 = ['Mateus', 'José', 'Ana', 'Cláudia', 'Bruna'];
+
+const hasName = (arr, name) => {
+  return arr.some((currentName) => currentName === name);
+}
+
+console.log(hasName(names2, 'Ana'))
+
+// 2: 
+const people = [
+  { name: 'Mateus', age: 18 },
+  { name: 'José', age: 16 },
+  { name: 'Ana', age: 23 },
+  { name: 'Cláudia', age: 20 },
+  { name: 'Bruna', age: 19 },
+];
+
+const verifyAges = (arr2, minimumAge) => {
+  return arr2.every((person) => person.age >= minimumAge);
+}
+
+console.log(verifyAges(people, 18));
+
+// Exercícios Array.sort: 
+// 1:
+const pessoas = [
+  { name: 'Mateus', age: 18 },
+  { name: 'José', age: 16 },
+  { name: 'Ana', age: 23 },
+  { name: 'Cláudia', age: 20 },
+  { name: 'Bruna', age: 19 },
+];
+
+pessoas.sort((pessoaA, pessoaB) => pessoaA.age - pessoaB.age);
+
+console.log(pessoas);
+
+//2: 
+const pessoas2 = [
+  { name: 'Mateus', age: 18 },
+  { name: 'José', age: 16 },
+  { name: 'Ana', age: 23 },
+  { name: 'Cláudia', age: 20 },
+  { name: 'Bruna', age: 19 },
+];
+
+pessoas2.sort((pessoaA, pessoaB) => pessoaB.age - pessoaA.age);
+
+console.log(pessoas2);
