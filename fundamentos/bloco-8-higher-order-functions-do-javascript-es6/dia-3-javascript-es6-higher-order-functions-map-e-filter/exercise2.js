@@ -62,20 +62,40 @@ const books = [
 ];
 
 // Adicione o código do exercício aqui:
-const expectedResult = {
-  author: {
-    birthYear: 1948,
-    name: 'George R. R. Martin',
+const expectedResult = [
+  {
+    age: 31,
+    author: 'Isaac Asimov',
   },
-  genre: 'Fantasia',
-  id: 1,
-  name: 'As Crônicas de Gelo e Fogo',
-  releaseYear: 1991,
-};
+  {
+    age: 38,
+    author: 'H. P. Lovecraft',
+  },
+  {
+    age: 39,
+    author: 'Stephen King',
+  },
+  {
+    age: 43,
+    author: 'George R. R. Martin',
+  },
+  {
+    age: 45,
+    author: 'Frank Herbert',
+  },
+  {
+    age: 62,
+    author: 'J. R. R. Tolkien',
+  },
+];
 
-function getNamedBook() {
-  return books.find((book) => book.name.length === 26);
+function nameAndAge() {
+  return books.map((book) => (
+    {
+      author: book.author.name, 
+      age: book.releaseYear - book.author.birthYear,}
+      ))
+      .sort((obj1, obj2) => obj1.age - obj2.age);
 }
 
-console.log(getNamedBook());
-
+console.log(nameAndAge());

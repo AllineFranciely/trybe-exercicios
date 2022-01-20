@@ -62,20 +62,12 @@ const books = [
 ];
 
 // Adicione o código do exercício aqui:
-const expectedResult = {
-  author: {
-    birthYear: 1948,
-    name: 'George R. R. Martin',
-  },
-  genre: 'Fantasia',
-  id: 1,
-  name: 'As Crônicas de Gelo e Fogo',
-  releaseYear: 1991,
-};
+const expectedResult = 'O Senhor dos Anéis';
 
-function getNamedBook() {
-  return books.find((book) => book.name.length === 26);
+function authorWith3DotsOnName() {
+  return books.filter((book) => (
+    book.author.name[1] === '.' && book.author.name[4] === '.' && book.author.name[7] === '.'
+  ))[0].name;
 }
 
-console.log(getNamedBook());
-
+console.log(authorWith3DotsOnName());
