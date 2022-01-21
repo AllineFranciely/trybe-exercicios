@@ -62,3 +62,14 @@ const books = [
 ];
 
 // Adicione o código do exercício aqui:
+const expectedResult = 43;
+
+function averageAge() {
+  const numberOfBooks = books.length;
+  const sumOfAges = books.reduce((accumulator, book) => (
+    accumulator + (book.releaseYear - book.author.birthYear)
+  ), 0);
+  return sumOfAges / numberOfBooks;
+}
+
+console.log(averageAge());
