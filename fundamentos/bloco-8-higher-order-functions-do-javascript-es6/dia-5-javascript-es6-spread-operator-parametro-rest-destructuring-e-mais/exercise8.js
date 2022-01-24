@@ -1,4 +1,7 @@
 // escreva greet abaixo
+const greet = (name, cumprimento = 'Hi') => { 
+  return `${cumprimento} ${name}!`
+};
 
 console.log(greet('John')) // 'Hi John'
 console.log(greet('John', 'Good morning')) // 'Good morning John'
