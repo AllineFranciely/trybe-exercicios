@@ -16,6 +16,7 @@ h1 {
 .pokedex {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 10px 10px;
   background-color: aqua;
   background-image: url(./screen-0.jpg);
