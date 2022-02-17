@@ -36,6 +36,7 @@ h1 {
 
 .pokemon:hover {
   transform: scale(1.1); 
+  border: solid 2px rgb(219, 133, 236);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
