@@ -33,7 +33,7 @@ const meuReducer = (state = ESTADO_INICIAL, action) => {
       case 'RANDOM_COLOR': // 6:
         return {
           ...state,
-          colors: [...state.colors, criaCor()],
+          colors: [...state.colors, criarCor()],
           index: state.colors.length,
         };
     default:
