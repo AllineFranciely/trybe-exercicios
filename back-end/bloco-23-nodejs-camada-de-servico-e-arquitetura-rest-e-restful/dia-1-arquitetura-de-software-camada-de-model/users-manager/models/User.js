@@ -1,5 +1,15 @@
-const Connection = require('mysql2/typings/mysql/lib/Connection');
 const connection = require('./connection');
+const Joi = require('joi');
+
+const userSchema = Joi.object({
+	firstName: Joi.string().required(),
+	lastName: Joi.string().required(),
+	email: Joi.string().email().required(),
+	password: Joi.string().min(6).required()})
+
+  function isValid(userData) {
+    return userSchema.validate(userData);
+  }
 
 function formatUser({ id, first_name: firstName, last_name: lastName, email }) {
   return {
@@ -37,4 +47,4 @@ async function updateUser(id, { firstName, lastName, email, password }) {
 	return findById(id);
 }
 
-module.exports = { formatUser, create, findAll };
+module.exports = { formatUser, create, findAll, findById, updateUser, isValid  };
