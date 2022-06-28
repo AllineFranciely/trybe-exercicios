@@ -46,3 +46,55 @@ describe('Insere um novo filme no BD', () => {
 
   });
 });
+
+describe('Procura um filme pelo "ID"', () => {
+  before(async () => {
+    const execute = [[]];
+
+    sinon.stub(connection, 'execute').resolves(execute);
+  });
+  after(async () => {
+    connection.restore();
+  });
+
+  describe('quando o "ID" bão existe', () => {
+    it('retorna null', async () => {
+      const response = await MoviesModel.getById();
+      expect(response).to.be.equal(null);
+    });
+  });
+
+  describe('quando o "ID" existe', () => {
+    before (() => {
+      sinon.stub(MoviesModel, 'getById')
+      .resolves(
+        {
+          id: 1,
+          title: 'Example movie',
+          directedBy: 'Jane Dow',
+          releaseYear: 1999,
+        }
+      );
+    });
+
+    after(() => {
+      MoviesModel.getById.restore();
+    });
+
+    it('retorna um objeto', async () => {
+      const response = await MoviesModel.getById(1);
+      expect(response).to.be.an('object');
+    });
+
+    it('o objeto não está vazio', async () => {
+      const response = await MoviesModel.getById(1);
+      expect(response).to.be.not.empty;
+    });
+    
+    it('o objeto possui as propriedas "id, title, releaseYear e directedBy"', async () => {
+      const item = await MoviesModel.getById(1);
+      expect(item).to.include.all.keys('id', 'title', 'releaseYear', 'directedBy');
+    });
+  });
+});
+
