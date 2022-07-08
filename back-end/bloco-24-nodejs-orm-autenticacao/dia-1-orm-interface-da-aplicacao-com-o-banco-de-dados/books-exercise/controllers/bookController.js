@@ -22,16 +22,16 @@ const getById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const { title, author, pageQuantity } = req.body;
-  const book = await BookService.create({ title, author, pageQuantity });
+  const { title, author, pageQuantity, publisher } = req.body;
+  const book = await BookService.create({ title, author, pageQuantity, publisher });
 
   res.status(201).json(book);
 };
 
 const update = async (req, res) => {
   const { id } = req.params;
-  const { title, author, pageQuantity } = req.body;
-  const updateUser = await BookService.update(id, { title, author, pageQuantity });
+  const { title, author, pageQuantity, publisher } = req.body;
+  const updateUser = await BookService.update(id, { title, author, pageQuantity, publisher });
   if(!updateUser) {
     return res.status(404).json({ message: 'Book not found' })
   }
