@@ -1,4 +1,4 @@
-enum months {
+export enum Months {
   JANEIRO = "Janeiro",
   FEVEREIRO = "Fevereiro",
   MARCO = "Março",

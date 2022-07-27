@@ -1,4 +1,4 @@
-enum Seasons {
+export enum Seasons {
   OUTONO = "Outono",
   INVERNO = "Inverno",
   PRIMAVERA = "Primavera",
