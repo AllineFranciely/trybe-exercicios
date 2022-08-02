@@ -2,5 +2,8 @@
   "devDependencies": {
     "@testing-library/user-event": "^14.2.0",
     "nodemon": "^2.0.18"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
   }
 }
