@@ -21,6 +21,19 @@ class TV {
     console.log(`TV ${this._brand}, ${this._size}", resolution: ${this._resolution} \n\
     available connections: ${this._connections}`,);
   }
+
+  get connectedTo(): string | undefined {
+    return this._connectedTo;
+  }
+
+  set connectedTo(value: string | undefined) {
+    if (!value || this._connections.includes(value)) {
+      this._connectedTo = value;
+      console.log(this._connectedTo);
+    } else {
+      console.log('Sorry, connection unavailable!');
+    }
+  }
 }
 
 const tv1 = new TV('LG', 32, '4K', ['HDMI', 'Ethernet', 'Wifi']);
