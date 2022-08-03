@@ -22,3 +22,6 @@ class TV {
     available connections: ${this.connections}`,);
   }
 }
+
+const tv1 = new TV('LG', 32, '4K', ['HDMI', 'Ethernet', 'Wifi']);
+tv1.turnOn();
