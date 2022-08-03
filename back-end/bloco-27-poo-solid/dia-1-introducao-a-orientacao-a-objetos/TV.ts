@@ -38,3 +38,5 @@ class TV {
 
 const tv1 = new TV('LG', 32, '4K', ['HDMI', 'Ethernet', 'Wifi']);
 tv1.turnOn();
+tv1.connectedTo = 'Wi-Fi';
+console.log('Connected to: ', tv1.connectedTo);
